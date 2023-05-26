@@ -5,6 +5,19 @@ var grid = document.createElement('div');
 
 body.appendChild(grid);
 
+function getRandomColor() {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+
+function add10percentBlack(color){
+
+}
+
 function etch_a_sketch(size){
     grid.remove();
     grid = document.createElement('div');
@@ -21,7 +34,13 @@ function etch_a_sketch(size){
             const cell = document.createElement('div');
             cell.style.cssText = 'flex: auto;'; 
             cell.addEventListener('mouseover', ()=>{
-                cell.style.backgroundColor = 'black';
+                if(!cell.classList.contains('hovered')){
+                    cell.classList.add('hovered');
+                    cell.style.backgroundColor = getRandomColor();
+                } else {
+                    //funtionality to add 10% black to a cell goes here. 
+                    // cell.style.backgroundColor = cell.style.backgroundColor. + 0.1 * 'black';
+                }
             });
             row.appendChild(cell);
         }
